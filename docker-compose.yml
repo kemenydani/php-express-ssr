@@ -1,0 +1,25 @@
+version: '3.7'
+
+services:
+  seo-desktop-apache:
+    container_name: seo-desktop-apache
+    build:
+      context: ./src/php-app
+      dockerfile: ./Dockerfile
+    restart: always
+    ports:
+      - "9002:80"
+    volumes:
+      - ./src/php-app:/var/www/html
+    environment:
+      - VIRTUAL_HOST=www.php8-sandbox.local
+      - APACHE_RUN_DIR=/var/run/apache2
+      - APACHE_RUN_USER=#1000
+      - APACHE_RUN_GROUP=#1000
+      - APACHE_LOG_DIR=/var/log/apache2
+      - APACHE_PID_FILE=/tmp/apache2.pid
+      - APACHE_LOCK_DIR=/var/lock/apache2
+    extra_hosts:
+      - "www.php8-sandbox.local:127.0.0.1"
+
+

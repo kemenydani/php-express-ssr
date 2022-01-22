@@ -1,0 +1,23 @@
+{
+    "name": "daniel/app",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Daniel Kemeny",
+            "email": "kemenydani93@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "src\\": "src/",
+            "src\\core\\": "src/core/",
+            "src\\page\\": "src/page/",
+            "src\\ui\\": "src/ui/",
+            "src\\interfaces\\": "src/interfaces/"
+        }
+    },
+    "require": {
+        "ext-json": "*",
+        "ext-pdo": "*"
+    }
+}
