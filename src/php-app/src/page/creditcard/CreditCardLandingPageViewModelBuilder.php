@@ -86,7 +86,7 @@ final class CreditCardLandingPageViewModelBuilder implements PageViewModelBuilde
         );
         $context = stream_context_create($opts);
 
-        $reactHTML = file_get_contents('http://seo-desktop-node:3000/creditcard-render', false, $context);
+        $reactHTML = file_get_contents('http://seo-desktop-node:3000/test', false, $context);
         $view->setReactHTML($reactHTML);
         $view->setPageSections($this->pageSections);
         return $view;

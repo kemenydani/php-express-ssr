@@ -21,5 +21,17 @@ services:
       - APACHE_LOCK_DIR=/var/lock/apache2
     extra_hosts:
       - "www.php8-sandbox.local:127.0.0.1"
-
+  seo-desktop-node:
+    container_name: seo-desktop-node
+    build:
+      context: ./src/node-app
+      dockerfile: ./Dockerfile
+    volumes:
+      - ./src/node-app:/app
+      - /app/node_modules
+    depends_on:
+      - seo-desktop-apache
+    ports:
+      - "9005:3000"
+    command: npm run start
 
