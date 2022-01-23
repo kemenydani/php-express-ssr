@@ -1,9 +1,12 @@
 import React from "react";
 import InfoBox, {InfoBoxProps} from "../../components/info-box/InfoBox";
 import Button, {ButtonProps} from "../../components/button/Button";
+import {Container, PageWrapper, InfoBoxWrapper, SectionTitle} from "./styles";
 
 export type CreditCardLandingPageView = {
-    welcomeBox?: InfoBoxProps;
+    infoBoxLeft?: InfoBoxProps;
+    infoBoxRight?: InfoBoxProps;
+    infoBox?: InfoBoxProps;
     resultPageButton?: ButtonProps;
 }
 
@@ -20,23 +23,37 @@ export default function CreditCardLandingPage({
     }
 
     const {
-        welcomeBox,
+        infoBoxLeft,
+        infoBoxRight,
+        infoBox,
         resultPageButton
     } = viewModel;
 
     return (
-        <>
-            <div>Hello from React</div>
-            {welcomeBox && (
-                <InfoBox title={welcomeBox.title} text={welcomeBox.text} />
-            )}
-            {resultPageButton && (
-                <div onClick={() => {
-                    alert("Clicked!")
-                }}>
-                    <Button text={resultPageButton.text} />
-                </div>
-            )}
-        </>
+        <PageWrapper>
+            <Container>
+                <SectionTitle>
+                    <h1>React Section</h1>
+                </SectionTitle>
+                <InfoBoxWrapper>
+                    {infoBoxLeft && (
+                        <InfoBox title={infoBoxLeft.title} text={infoBoxLeft.text} />
+                    )}
+                    {infoBoxRight && (
+                        <InfoBox title={infoBoxRight.title} text={infoBoxRight.text} />
+                    )}
+                </InfoBoxWrapper>
+                {infoBox && (
+                    <InfoBox title={infoBox.title} text={infoBox.text} />
+                )}
+                {resultPageButton && (
+                    <div onClick={() => {
+                        alert("Clicked!")
+                    }}>
+                        <Button text={resultPageButton.text} />
+                    </div>
+                )}
+            </Container>
+        </PageWrapper>
     );
 }

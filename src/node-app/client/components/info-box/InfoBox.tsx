@@ -13,7 +13,9 @@ export default function InfoBox({
 
     return (
         <StyledInfoBox>
-            <h3>{title}</h3>
+            {title && (
+                <h3>{title}</h3>
+            )}
             <p>{text}</p>
         </StyledInfoBox>
     )

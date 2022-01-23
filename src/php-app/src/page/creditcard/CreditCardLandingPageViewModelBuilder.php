@@ -75,10 +75,16 @@ final class CreditCardLandingPageViewModelBuilder implements PageViewModelBuilde
 
         $ssrView = new SSRViewModel();
         $infoBoxBuilder = new InfoBoxBuilder();
-        $infoBoxBuilder->withText("Info box text from php");
+        $infoBoxBuilder->withText("Bei Festgeld legen Sie einen gewünschten Geldbetrag für eine feste Laufzeit zu einem gleichbleibenden Zinssatz auf einem Festgeldkonto an. Einer der Vorteile von Festgeld ist, dass Sie die passende Laufzeit selbst wählen können – von wenigen Wochen bis zu mehreren Jahren. Die meisten Banken zahlen für längere Laufzeiten auch höhere Festgeld Zinsen.");
         $ssrView->setInfoBox($infoBoxBuilder->build());
+        $infoBoxLeftBuilder = new InfoBoxBuilder();
+        $infoBoxLeftBuilder->withText("Info box left");
+        $ssrView->setInfoBoxLeft($infoBoxLeftBuilder->build());
+        $infoBoxRightBuilder = new InfoBoxBuilder();
+        $infoBoxRightBuilder->withText("Info box right");
+        $ssrView->setInfoBoxRight($infoBoxRightBuilder->build());
         $buttonBuilder = new ButtonBuilder();
-        $buttonBuilder->withText("Button text from php");
+        $buttonBuilder->withText("Click me! I am hydrated...");
         $ssrView->setResultPageButton($buttonBuilder->build());
         $viewModel = http_build_query([
             "viewModel" => json_encode($ssrView, JSON_THROW_ON_ERROR)
