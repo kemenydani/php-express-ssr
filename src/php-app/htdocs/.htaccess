@@ -3,5 +3,4 @@ RewriteEngine On
 RewriteBase /
 RewriteCond %{REQUEST_FILENAME} !-f
 
-RewriteRule ^api/girokonto index.php?page=giroMoneyLandingPage [QSA,L]
-RewriteRule ^kreditkarte index.php?page=creditCardLandingPage [QSA,L]
+RewriteRule ^festgeld index.php?page=timeMoneyLandingPage [QSA,L]

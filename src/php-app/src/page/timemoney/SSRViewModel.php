@@ -1,6 +1,6 @@
 <?php
 
-namespace src\page\creditcard;
+namespace src\page\timemoney;
 
 use src\ui\button\Button;
 use src\ui\infoBox\InfoBox;

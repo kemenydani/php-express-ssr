@@ -1,14 +1,14 @@
 <?php
 
-namespace src\page\creditcard;
+namespace src\page\timemoney;
 
 use src\interfaces\PageViewModel;
 
-final class CreditCardLandingPageViewModel implements PageViewModel {
+final class TimeMoneyLandingPageViewModel implements PageViewModel {
 
-    public $title = 'apache';
-    public $reactHTML = '';
-    public $pageSections = [];
+    public string $title = 'apache';
+    public string $reactHTML = '';
+    public array $pageSections = [];
 
     public function setReactHTML(string $reactHTML): void {
         $this->reactHTML = $reactHTML;

@@ -10,8 +10,8 @@ final class PageTemplateResolver {
 
     public function getPageTemplatePath(string $page): ?string {
         switch ($page) {
-            case Page::creditCardLandingPage:
-                return __DIR__ . '/../templates/page/creditcard/creditCardLandingPage.phtml';
+            case Page::timeMoneyLandingPage:
+                return __DIR__ . '/../templates/page/timemoney/timeMoneyLandingPage.phtml';
             default:
                 return null;
         }

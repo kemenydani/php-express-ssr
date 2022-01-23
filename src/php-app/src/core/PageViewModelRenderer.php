@@ -10,25 +10,16 @@ final class PageViewModelRenderer {
 
     public function renderPageViewModel(string $page, PageViewModel $pageViewModel): void {
         switch ($page) {
-            case Page::giroMoneyLandingPage:
-                $this->renderAsJson($pageViewModel);
-                break;
-            case Page::creditCardLandingPage:
+            case Page::timeMoneyLandingPage:
                 $this->renderAsHtml($pageViewModel, $this->getPageTemplate($page));
                 break;
             default:
                 throw new PageViewModelRendererException("Could not render the page {$page}");
-                break;
         }
     }
 
     private function getPageTemplate($page): ?string {
         return (new PageTemplateResolver())->getPageTemplatePath($page);
-    }
-
-    private function renderAsJson(PageViewModel $pageViewModel): void {
-        header('Content-Type: application/json');
-        echo json_encode($pageViewModel);
     }
 
     private function renderAsHtml(PageViewModel $pageViewModel, ?string $templatePath): void {

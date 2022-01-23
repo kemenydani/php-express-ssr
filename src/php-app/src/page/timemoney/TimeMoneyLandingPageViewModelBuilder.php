@@ -1,7 +1,6 @@
 <?php
 
-namespace src\page\creditcard;
-
+namespace src\page\timemoney;
 
 use src\interfaces\PageViewModel;
 use src\interfaces\PageViewModelBuilder;
@@ -12,9 +11,9 @@ use src\ui\section\PageSectionBuilder;
 use src\ui\teaser\ControlsBuilder;
 use src\ui\teaser\TeaserBuilder;
 
-final class CreditCardLandingPageViewModelBuilder implements PageViewModelBuilder {
+final class TimeMoneyLandingPageViewModelBuilder implements PageViewModelBuilder {
 
-    public $pageSections = [];
+    public array $pageSections = [];
 
     public function create(): PageViewModel {
         $this->withPageSection($this->getTeaserPageSection());
@@ -71,7 +70,7 @@ final class CreditCardLandingPageViewModelBuilder implements PageViewModelBuilde
     }
 
     public function build(): PageViewModel {
-        $view = new CreditCardLandingPageViewModel();
+        $view = new TimeMoneyLandingPageViewModel();
 
         $ssrView = new SSRViewModel();
         $infoBoxBuilder = new InfoBoxBuilder();
@@ -99,7 +98,7 @@ final class CreditCardLandingPageViewModelBuilder implements PageViewModelBuilde
         );
         $context = stream_context_create($opts);
 
-        $reactHTML = file_get_contents('http://seo-desktop-node:3000/creditcard', false, $context);
+        $reactHTML = file_get_contents('http://seo-desktop-node:3000/timemoney', false, $context);
         $view->setReactHTML($reactHTML);
         $view->setPageSections($this->pageSections);
         return $view;

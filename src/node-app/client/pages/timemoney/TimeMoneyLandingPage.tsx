@@ -3,7 +3,7 @@ import InfoBox, {InfoBoxProps} from "../../components/info-box/InfoBox";
 import Button, {ButtonProps} from "../../components/button/Button";
 import {Container, PageWrapper, InfoBoxWrapper, SectionTitle} from "./styles";
 
-export type CreditCardLandingPageView = {
+export type TimeMoneyLandingPageView = {
     infoBoxLeft?: InfoBoxProps;
     infoBoxRight?: InfoBoxProps;
     infoBox?: InfoBoxProps;
@@ -11,10 +11,10 @@ export type CreditCardLandingPageView = {
 }
 
 type Props = {
-    viewModel: CreditCardLandingPageView|undefined;
+    viewModel: TimeMoneyLandingPageView|undefined;
 }
 
-export default function CreditCardLandingPage({
+export default function TimeMoneyLandingPage({
     viewModel
 }: Props): JSX.Element|null {
 
