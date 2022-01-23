@@ -1,30 +1,30 @@
 import express from "express";
 import React from "react";
 import ReactDOMServer from "react-dom/server";
-import App from "../client/components/app";
 import {ServerStyleSheet} from "styled-components";
+import CreditCardLandingPage, {CreditCardLandingPageView} from "../client/pages/creditcard/CreditCardLandingPage";
 
 const server = express();
+const bodyParser = require('body-parser');
 
+server.use(bodyParser.urlencoded({ extended: true }));
+server.use(bodyParser.json());
 server.use('/static', express.static('static'));
 
-server.post("/get", (req, res) => {
-  res.send(`<html><body>testei</body></html>`)
+server.get("/test", (req, res) => {
+  res.send(`test`)
 });
 
-server.post("/test", (req, res) => {
+server.post("/creditcard", (req, res) => {
   const sheet = new ServerStyleSheet();
-  const component = ReactDOMServer.renderToString(sheet.collectStyles(<App test={"hello"} />));
+  const viewModel: CreditCardLandingPageView|undefined = JSON.parse(req.body.viewModel);
+  const component = ReactDOMServer.renderToString(sheet.collectStyles(<CreditCardLandingPage viewModel={viewModel} />));
   const styles = sheet.getStyleTags();
 
   res.send(`
-    <html>
-      <body>
-        ${styles}
-        <div id="root">${component}</div>
-        <script src="http://localhost:9005/static/client.js"></script>
-      </body>
-    </html>
+    ${styles}
+    <div id="root" data-view-model="${encodeURIComponent(req.body.viewModel)}">${component}</div>
+    <script src="http://localhost:9005/static/creditcard-client-bundle.js"></script>
   `)});
 
 server.listen(3000, () => {

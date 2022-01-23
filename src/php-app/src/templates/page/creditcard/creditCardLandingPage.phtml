@@ -4,13 +4,64 @@
 use src\interfaces\PageViewModel;
 
 ?>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style type="text/css">
+            body, html {
+                padding: 0;
+                margin: 0;
+                width: 100%;
+                min-height: 100%;
+                font-family: Verdana, sans-serif;
+                color: #333;
+            }
 
-<div>
-    phtml stuff 1
-</div>
+            .page-header {
+                width: 100%;
+                height: 60px;
+                background-color: #005ea8;
+                margin-bottom: 15px;
+                font-size: 25px;
+                font-weight: bold;
+                color: white;
+                line-height: 60px;
+                padding: 0 15px 0 15px;
+            }
 
-<?= $pageViewModel->getReactHTML() ?>
+            .teaser {
+                height: 280px;
+                border-bottom: 1px solid #ccc;
+                margin-bottom: 15px;
+                display: flex;
+                justify-content: center;
+            }
 
-<div>
-    phtml stuff 2
-</div>
+            .container {
+                width: 1280px;
+            }
+        </style>
+    </head>
+    <body>
+        <header class="page-header">
+            CHECK24
+        </header>
+        <div class="teaser">
+            <div class="container">
+                <h2>Festgeld Vergleich: Top Festgeldzinsen sichern</h2>
+                <h4>Tages- und Festgeldkonten aller wichtigen Anbieter im Vergleich</h4>
+                <ol>
+                    <li>test</li>
+                    <li>test</li>
+                    <li>test</li>
+                </ol>
+            </div>
+        </div>
+        <?= $pageViewModel->getReactHTML() ?>
+    <footer>
+        footer
+    </footer>
+    </body>
+</html>
+

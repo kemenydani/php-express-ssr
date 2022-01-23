@@ -6,6 +6,7 @@ namespace src\page\creditcard;
 use src\interfaces\PageViewModel;
 use src\interfaces\PageViewModelBuilder;
 use src\ui\button\ButtonBuilder;
+use src\ui\infoBox\InfoBoxBuilder;
 use src\ui\section\PageSection;
 use src\ui\section\PageSectionBuilder;
 use src\ui\teaser\ControlsBuilder;
@@ -72,21 +73,27 @@ final class CreditCardLandingPageViewModelBuilder implements PageViewModelBuilde
     public function build(): PageViewModel {
         $view = new CreditCardLandingPageViewModel();
 
-        $postdata = http_build_query(
-            array(
-                'title' => 'Hello from PHP backend'
-            )
-        );
+        $ssrView = new SSRViewModel();
+        $infoBoxBuilder = new InfoBoxBuilder();
+        $infoBoxBuilder->withText("Info box text from php");
+        $ssrView->setInfoBox($infoBoxBuilder->build());
+        $buttonBuilder = new ButtonBuilder();
+        $buttonBuilder->withText("Button text from php");
+        $ssrView->setResultPageButton($buttonBuilder->build());
+        $viewModel = http_build_query([
+            "viewModel" => json_encode($ssrView, JSON_THROW_ON_ERROR)
+        ]);
+
         $opts = array('http' =>
             array(
                 'method' => 'POST',
                 'header' => 'Content-type: application/x-www-form-urlencoded',
-                'content' => $postdata
+                'content' => $viewModel
             )
         );
         $context = stream_context_create($opts);
 
-        $reactHTML = file_get_contents('http://seo-desktop-node:3000/test', false, $context);
+        $reactHTML = file_get_contents('http://seo-desktop-node:3000/creditcard', false, $context);
         $view->setReactHTML($reactHTML);
         $view->setPageSections($this->pageSections);
         return $view;

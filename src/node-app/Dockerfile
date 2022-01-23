@@ -17,6 +17,6 @@ RUN npm run build:client
 # Bundle app source
 COPY . .
 
-CMD ['node', './dist/server.js']
+CMD ['nodemon', './dist/server.js']
 
 EXPOSE 3000
